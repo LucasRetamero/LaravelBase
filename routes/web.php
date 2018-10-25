@@ -18,6 +18,8 @@ Route::get('/produto/att','ProdutoController@Atualizando');
 Route::get('/produto/del','ProdutoController@Deletando');
 Route::get('/produto/add','ProdutoController@Adicionar');
 Route::post('/produto/cadastrar','ProdutoController@Add')->name('produto.cadastrar');
+Route::get('/produto/atualizar/{id}','ProdutoController@Att')->name('produto.atualizar');
+
 });
 
 Route::group(['namespace'=>'Site'],function(){

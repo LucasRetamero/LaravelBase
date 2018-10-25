@@ -13,6 +13,7 @@
 <form method="post" action="{{ route('produto.cadastrar') }}">
   <div class="form-group">
   <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+  <input type="hidden" name="id"  value="id" />
     <label for="exampleInputEmail1">Nome</label>
     <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name" value="{{ old('name') }}">
     <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->

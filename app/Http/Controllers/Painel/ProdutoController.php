@@ -49,26 +49,34 @@ class ProdutoController extends Controller
     $title = "Cadastro de produto";
     return view('painel.produto.cadastrar.index',compact('title'));
     }
+
     public function Add(Request $request){
     $dadosForm = $request->all();
-    if($dadosForm['txtAtivo'] == 'Active')
+    if($dadosForm['active'] == 'Active'){
     $verifica = 1;
-    else
+    }else{
     $verifica = 0;
+    }
     //dd = imprimir saida  usado como debug dd()
     $this->validate($request,$this->produto->rules);
     $salvando = $this->getProduto()::create([
-    'name'        => $dadosForm['txtNome'],
-    'number'      => $dadosForm['txtQuantidade'],
+    'name'        => $dadosForm['name'],
+    'number'      => $dadosForm['number'],
     'active'      => $verifica,
-    'category'    => $dadosForm['txtCategoria'],
-    'description' => $dadosForm['txtDescricao']
+    'category'    => $dadosForm['category'],
+    'description' => $dadosForm['description']
     ]);
     if($salvando)
     return redirect()->route('produto.lista');
     else
     return "Erro ao salvar";
     }
+
+    public function Att($id){
+    $title = "Atualizar Produto";
+    return view('painel.produto.editar.index',compact('id','title'));
+    }
+
     public function getProduto(){
     return $this->produto;
     }

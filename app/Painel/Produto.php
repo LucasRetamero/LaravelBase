@@ -11,8 +11,6 @@ class Produto extends Model
     public $rules = [
         'name'        => 'required|min:3|max:100',
         'number'      => 'required|numeric',
-        'active'      => 'required',
-        'category'    => 'required',
         'description' => 'min:3|max:1000'
     ];
 }
