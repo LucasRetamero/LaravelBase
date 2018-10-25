@@ -1,0 +1,10 @@
+<html>
+<head>
+@include('inicial.head.index')
+</head>
+<body>
+@include('inicial.menu.index')
+@include('inicial.section.index')
+@include('inicial.footer.index')
+</body>
+</html>

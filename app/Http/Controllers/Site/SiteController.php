@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 class SiteController extends Controller{
 
 public function Index(){
-return view('welcome');
+return view('inicial.index');
 }
 
 public function CategoriaIndex(){

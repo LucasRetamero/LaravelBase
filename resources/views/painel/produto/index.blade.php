@@ -2,7 +2,8 @@
 
 @section('content')
 <table class="table">
-  <caption>List of products</caption>
+  <caption>
+  <a href="{{ url('/produto/add') }}" title="Adicionar Produto"><button type="button" class="btn btn-success btn-lg btn-block"><i class="fas fa-plus"></i> Cadastrar produto</button></a></caption>
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -22,8 +23,7 @@
       <td>{{$produto->category}}</td>
       <td>{{$produto->description}}</td>   
       <td><a href="{{ $produto->id}}" class="btn btn-primary" title="Editar Produto"><i class="fas fa-pen-alt"></i></a> 
-          <a href="{{ $produto->id }}" class="btn btn-danger" title="Deletar Produto"><i class="fas fa-trash-alt"></i></a>
-          <a href="{{ url('/produto/add') }}" class="btn btn-success" title="Adicionar Produto"><i class="fas fa-plus"></i></a></td> 
+          <a href="{{ $produto->id }}" class="btn btn-danger" title="Deletar Produto"><i class="fas fa-trash-alt"></i></a></td> 
     </tr>
 @endforeach
   </tbody>
