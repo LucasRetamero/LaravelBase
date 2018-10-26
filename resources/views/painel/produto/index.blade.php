@@ -22,7 +22,7 @@
       <td>{{$produto->active}}</td>
       <td>{{$produto->category}}</td>
       <td>{{$produto->description}}</td>   
-      <td><a href="{{ $produto->id}}" class="btn btn-primary" title="Editar Produto"><i class="fas fa-pen-alt"></i></a> 
+      <td><a href="{{ route('produto.atualizar',$produto->id) }}" class="btn btn-primary" title="Editar Produto"><i class="fas fa-pen-alt"></i></a> 
           <a href="{{ $produto->id }}" class="btn btn-danger" title="Deletar Produto"><i class="fas fa-trash-alt"></i></a></td> 
     </tr>
 @endforeach

@@ -74,7 +74,32 @@ class ProdutoController extends Controller
 
     public function Att($id){
     $title = "Atualizar Produto";
-    return view('painel.produto.editar.index',compact('id','title'));
+    $dados = $this->getProduto()->find($id);
+    if($dados)
+    return view('painel.produto.editar.index',compact('dados','title','id'));
+    else
+    return redirect()->route('produto.lista');
+    }
+    
+    public function Atualizar(Request $request){
+    if($request['active'] == "Active"){
+    $vali = 1;
+    }else{
+    $vali = 0;
+    }
+    $this->validate($request,$this->getProduto()->rules);
+    $dadosForm = $this->getProduto()::where('id',$request['id'])
+                                    ->update([
+                                    'name'        => $request['name'],
+                                    'number'      => $request['number'],
+                                    'active'      => $vali,
+                                    'category'    => $request['category'],
+                                    'description' => $request['description']
+                                    ]);
+    if($dadosForm)
+    return redirect()->route('produto.lista');
+    else
+    return "Erro ao alterar";
     }
 
     public function getProduto(){
