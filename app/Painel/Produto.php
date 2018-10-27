@@ -13,4 +13,35 @@ class Produto extends Model
         'number'      => 'required|numeric',
         'description' => 'min:3|max:1000'
     ];
+
+    /* 
+    ************ Sintaxe de querys ************
+    
+    public function Salvando(){
+    $saveProdutos = $this->getProduto()::create([
+            'name' => 'Uno',
+            'number' => '900',
+            'active' => '1',
+            'category' => 'eletronicos',
+            'description' => 'Junto com pack begginer two'
+            ]); 
+    }
+
+    public function Atualizando(){
+    $attProdutos = $this->getProduto()::where('id',1)
+                        ->update([
+            'name' => 'Two',
+            'number' => '100',
+            'active' => '0',
+            'category' => 'eletronicos',
+            'description' => 'All witch pack'
+            ]);
+    }
+    public function Deletando(){
+    $delProduto = $this->getProduto()::where('id','>=',2)
+                       ->delete();  
+    }
+
+    ************ Fim da sintaxe ************
+   */
 }

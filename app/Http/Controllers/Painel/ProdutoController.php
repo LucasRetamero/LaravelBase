@@ -21,30 +21,6 @@ class ProdutoController extends Controller
     return view('painel.produto.index',compact('produtos','title'));
     }
 
-    public function Salvando(){
-    $saveProdutos = $this->getProduto()::create([
-            'name' => 'Uno',
-            'number' => '900',
-            'active' => '1',
-            'category' => 'eletronicos',
-            'description' => 'Junto com pack begginer two'
-            ]); 
-    }
-
-    public function Atualizando(){
-    $attProdutos = $this->getProduto()::where('id',1)
-                        ->update([
-            'name' => 'Two',
-            'number' => '100',
-            'active' => '0',
-            'category' => 'eletronicos',
-            'description' => 'All witch pack'
-            ]);
-    }
-    public function Deletando(){
-    $delProduto = $this->getProduto()::where('id','>=',2)
-                       ->delete();  
-    }
     public function Adicionar(){
     $title = "Cadastro de produto";
     return view('painel.produto.cadastrar.index',compact('title'));
@@ -100,6 +76,25 @@ class ProdutoController extends Controller
     return redirect()->route('produto.lista');
     else
     return "Erro ao alterar";
+    }
+    
+    public function DeletarForm($id){
+    $title = "Deletar Produto";
+    $dados = $this->getProduto()::select('*')
+                                  ->where('id',$id)
+                                  ->get();
+    if($dados)
+    return view('painel.produto.deletar.index',compact('title','id','dados')); 
+    else
+    return "Erro de query no delete";   
+    }
+
+    public function Deletando(Request $request){
+    $deletando = $this->getProduto()::destroy($request['id']);
+    if($deletando)
+    return redirect()->route('produto.lista');
+    else
+    return "Erro ao deletar produto";
     }
 
     public function getProduto(){

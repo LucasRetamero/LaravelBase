@@ -11,16 +11,14 @@
 |
 */
 
-Route::group(['namespace'=>'Painel'],function(){
-Route::get('/produto','ProdutoController@index')->name('produto.lista');
-Route::get('/produto/save','ProdutoController@Salvando');
-Route::get('/produto/att','ProdutoController@Atualizando');
-Route::get('/produto/del','ProdutoController@Deletando');
-Route::get('/produto/add','ProdutoController@Adicionar');
-Route::post('/produto/cadastrar','ProdutoController@Add')->name('produto.cadastrar');
-Route::get('/produto/atualizar/{id}','ProdutoController@Att')->name('produto.atualizar');
-Route::post('/produto/atualizar/att','ProdutoController@Atualizar')->name('produto.att');
-
+Route::group(['prefix'=>'produto','namespace'=>'Painel'],function(){
+Route::get('/','ProdutoController@index')->name('produto.lista');
+Route::get('/add','ProdutoController@Adicionar')->name('produto.cadastrar.form');
+Route::post('/cadastrar','ProdutoController@Add')->name('produto.cadastrar');
+Route::get('/atualizar/{id}','ProdutoController@Att')->name('produto.atualizar');
+Route::post('/atualizar/att','ProdutoController@Atualizar')->name('produto.att');
+Route::get('/deletarform/{id}','ProdutoController@DeletarForm')->name('produto.deletar.form');
+Route::post('/deletar',"ProdutoController@Deletando")->name('produto.deletando');
 });
 
 Route::group(['namespace'=>'Site'],function(){
